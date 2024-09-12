@@ -1,7 +1,6 @@
 package org.example;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -12,8 +11,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class LineTest {
 
     static List<Line> lines = new ArrayList<>();
-    @BeforeEach
-    void createLine() {
+    @BeforeAll
+    static void simulateDifferentBowlingRolls() {
         lines.add(new Line(new String[]{"X", "7/", "9-", "X", "-8", "8/", "-6", "X", "X", "8/", "9"}));
         lines.add(new Line(new String[]{"X", "X", "X", "9-", "8/", "7/", "6/", "X", "X", "X", "9-"}));
         lines.add(new Line(new String[]{"X", "9-", "X", "X", "9-", "X", "8/", "7/", "X", "X", "9/"}));
@@ -22,7 +21,7 @@ class LineTest {
         lines.add(new Line(new String[]{"5/", "5/", "5/", "5/", "5/", "5/", "5/", "5/", "5/", "5/", "5"}));
     }
     @Test
-    void calculatePoints() {
+    void testDifferentScenariosOfLines() {
         lines.get(0).calculatePoints(); assertEquals(lines.get(0).getPoints(), 157);
         lines.get(1).calculatePoints(); assertEquals(lines.get(1).getPoints(), 218);
         lines.get(2).calculatePoints(); assertEquals(lines.get(2).getPoints(), 191);
