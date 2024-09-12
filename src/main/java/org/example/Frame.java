@@ -1,7 +1,7 @@
 package org.example;
 
 public class Frame {
-    final private String result;
+    private final String result;
 
     public Frame(String result) {
         this.result = result;
@@ -15,13 +15,13 @@ public class Frame {
     }
     protected int firstLineScore()    {
         if(isStrike())  return 10;
-        if(result.contains("-"))    return 0;
+        if(result.charAt(0) == '-')    return 0;
         else return Character.getNumericValue(result.charAt(0));
     }
     protected int secondLineScore()    {
         if(isStrike())  return 0;
         if(isSpare())  return (10 - Character.getNumericValue(result.charAt(0)));
-        if(result.contains("-"))    return 0;
+        if(result.charAt(1) == '-')    return 0;
         else return Character.getNumericValue(result.charAt(1));
     }
     protected int getScore()    {
