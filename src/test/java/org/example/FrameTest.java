@@ -27,7 +27,6 @@ class FrameTest {
                 () -> assertFalse(frames.get(3).isSpare()),
                 () -> assertTrue(frames.get(4).isSpare()));
     }
-
     @Test
     void isStrike() {
         assertAll(() -> assertFalse(frames.get(0).isStrike()),
@@ -35,5 +34,29 @@ class FrameTest {
                 () -> assertTrue(frames.get(2).isStrike()),
                 () -> assertFalse(frames.get(3).isStrike()),
                 () -> assertFalse(frames.get(4).isStrike()));
+    }
+    @Test
+    void firstLineScore() {
+        assertAll(() -> assertEquals(frames.get(0).firstLineScore(), 5),
+                () -> assertEquals(frames.get(1).firstLineScore(), 0),
+                () -> assertEquals(frames.get(2).firstLineScore(), 10),
+                () -> assertEquals(frames.get(3).firstLineScore(), 3),
+                () -> assertEquals(frames.get(4).firstLineScore(), 0));
+    }
+    @Test
+    void secondLineScore() {
+        assertAll(() -> assertEquals(frames.get(0).secondLineScore(), 5),
+                () -> assertEquals(frames.get(1).secondLineScore(), 0),
+                () -> assertEquals(frames.get(2).secondLineScore(), 0),
+                () -> assertEquals(frames.get(3).secondLineScore(), 2),
+                () -> assertEquals(frames.get(4).secondLineScore(), 10));
+    }
+    @Test
+    void getScore() {
+        assertAll(() -> assertEquals(frames.get(0).getScore(), 10),
+                () -> assertEquals(frames.get(1).getScore(), 0),
+                () -> assertEquals(frames.get(2).getScore(), 10),
+                () -> assertEquals(frames.get(3).getScore(), 5),
+                () -> assertEquals(frames.get(4).getScore(), 10));
     }
 }

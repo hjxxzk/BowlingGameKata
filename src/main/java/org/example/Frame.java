@@ -8,7 +8,7 @@ public class Frame {
     public Frame(String result) {
         this.result = result;
         this.firstRoll = new Roll(result.charAt(0));
-        if(result.length() == 2)    this.secondRoll = new Roll(result.charAt(1));
+        if(result.length() == 2)    this.secondRoll = new Roll(result.charAt(1), firstRoll.getKnockedPins());
     }
 
     protected boolean isSpare() {
@@ -19,7 +19,5 @@ public class Frame {
     }
     protected int firstLineScore()    { return firstRoll.getKnockedPins(); }
     protected int secondLineScore()    { return secondRoll != null ? secondRoll.getKnockedPins() : 0; }
-    protected int getScore()    {
-        return firstLineScore() + secondLineScore();
-    }
+    protected int getScore()    { return firstLineScore() + secondLineScore(); }
 }
