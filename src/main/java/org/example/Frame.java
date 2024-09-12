@@ -2,9 +2,13 @@ package org.example;
 
 public class Frame {
     private final String result;
+    private final Roll firstRoll;
+    private Roll secondRoll;
 
     public Frame(String result) {
         this.result = result;
+        this.firstRoll = new Roll(result.charAt(0));
+        if(result.length() == 2)    this.secondRoll = new Roll(result.charAt(1));
     }
 
     protected boolean isSpare() {
@@ -13,17 +17,8 @@ public class Frame {
     protected boolean isStrike() {
         return result.contains("X");
     }
-    protected int firstLineScore()    {
-        if(isStrike())  return 10;
-        if(result.charAt(0) == '-')    return 0;
-        else return Character.getNumericValue(result.charAt(0));
-    }
-    protected int secondLineScore()    {
-        if(isStrike())  return 0;
-        if(isSpare())  return (10 - Character.getNumericValue(result.charAt(0)));
-        if(result.charAt(1) == '-')    return 0;
-        else return Character.getNumericValue(result.charAt(1));
-    }
+    protected int firstLineScore()    { return firstRoll.getKnockedPins(); }
+    protected int secondLineScore()    { return secondRoll != null ? secondRoll.getKnockedPins() : 0; }
     protected int getScore()    {
         return firstLineScore() + secondLineScore();
     }
