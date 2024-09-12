@@ -37,26 +37,26 @@ class FrameTest {
     }
     @Test
     void checkIfMethodReturnsCorrectlyTheFirstRoll() {
-        assertAll(() -> assertEquals(frames.get(0).firstLineScore(), 5),
-                () -> assertEquals(frames.get(1).firstLineScore(), 0),
-                () -> assertEquals(frames.get(2).firstLineScore(), 10),
-                () -> assertEquals(frames.get(3).firstLineScore(), 3),
-                () -> assertEquals(frames.get(4).firstLineScore(), 0));
+        assertAll(() -> assertEquals(frames.get(0).getFirstLineScore(), 5),
+                () -> assertEquals(frames.get(1).getFirstLineScore(), 0),
+                () -> assertEquals(frames.get(2).getFirstLineScore(), 10),
+                () -> assertEquals(frames.get(3).getFirstLineScore(), 3),
+                () -> assertEquals(frames.get(4).getFirstLineScore(), 0));
     }
     @Test
     void checkIfMethodReturnsCorrectlyTheSecondRoll() {
-        assertAll(() -> assertEquals(frames.get(0).secondLineScore(), 5),
-                () -> assertEquals(frames.get(1).secondLineScore(), 0),
-                () -> assertEquals(frames.get(2).secondLineScore(), 0),
-                () -> assertEquals(frames.get(3).secondLineScore(), 2),
-                () -> assertEquals(frames.get(4).secondLineScore(), 10));
+        assertAll(() -> assertEquals(frames.get(0).getSecondLineScore(), 5),
+                () -> assertEquals(frames.get(1).getSecondLineScore(), 0),
+                () -> assertEquals(frames.get(2).getSecondLineScore(), 0),
+                () -> assertEquals(frames.get(3).getSecondLineScore(), 2),
+                () -> assertEquals(frames.get(4).getSecondLineScore(), 10));
     }
     @Test
     void checkIfMethodReturnsCorrectlyTheScoreForAFrame() {
-        assertAll(() -> assertEquals(frames.get(0).getScore(), 10),
-                () -> assertEquals(frames.get(1).getScore(), 0),
-                () -> assertEquals(frames.get(2).getScore(), 10),
-                () -> assertEquals(frames.get(3).getScore(), 5),
-                () -> assertEquals(frames.get(4).getScore(), 10));
+        assertAll(() -> assertEquals(frames.get(0).getSummaryScore(), 10),
+                () -> assertEquals(frames.get(1).getSummaryScore(), 0),
+                () -> assertEquals(frames.get(2).getSummaryScore(), 10),
+                () -> assertEquals(frames.get(3).getSummaryScore(), 5),
+                () -> assertEquals(frames.get(4).getSummaryScore(), 10));
     }
 }
