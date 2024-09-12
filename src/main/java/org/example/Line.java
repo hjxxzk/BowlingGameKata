@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Line {
+
     private int points;
     private List<Frame> frames;
 
@@ -12,6 +13,9 @@ public class Line {
         this.frames = createFrames(rolls);
     }
 
+    protected int getPoints() {
+        return points;
+    }
     private List<Frame> createFrames(String[] rolls)  {
         List<Frame> frames = new ArrayList<>();
         for(String frame : rolls)   {
@@ -19,9 +23,22 @@ public class Line {
         }
         return frames;
     }
-
-    private void calculatePoints()  {
-
+    protected void calculatePoints()  {
+        for(int frameIndex = 0; frameIndex < 10; frameIndex++) {
+            if(frames.get(frameIndex).isStrike())    addStrikeBonus(frameIndex);
+            else if (frames.get(frameIndex).isSpare())  addSpareBonus(frameIndex);
+            else points += frames.get(frameIndex).getScore();
+        }
+    }
+    private void addStrikeBonus(int frameIndex)   {
+        if(frames.get(frameIndex + 1).isStrike()) {
+            points += 20 + frames.get(frameIndex + 2).firstLineScore();
+        }   else {
+            points += 10 + frames.get(frameIndex + 1).getScore();
+        }
+    }
+    private void addSpareBonus(int frameIndex)   {
+        points += 10 + frames.get(frameIndex + 1).firstLineScore();
     }
 
 }
