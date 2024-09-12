@@ -26,5 +26,6 @@ public class Roll {
             default -> Character.getNumericValue(roll);
         };
     }
+
     protected int getKnockedPins() { return knockedPins; }
 }

@@ -38,7 +38,6 @@ public class Line {
         }
     }
 
-
      //Adds bonus points for a strike by including 10 points plus the score of the next two rolls.
      //Handles the case where the next roll is also a strike by including the score of the roll following the next frame.
     private void addStrikeBonus(int frameIndex)   {
@@ -53,5 +52,4 @@ public class Line {
     private void addSpareBonus(int frameIndex)   {
         points += 10 + frames.get(frameIndex + 1).getFirstLineScore();
     }
-
 }
